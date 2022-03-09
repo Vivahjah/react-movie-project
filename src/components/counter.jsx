@@ -1,17 +1,38 @@
-import React from 'react'
+import React, { useState } from "react";
 
-const counter = () => {
-    const formatCount = () => count === 0 ? 'zero' : count;
-    const state = {
-        count : 0,
-    }
-    const { count } = state;
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  const incrementCount = () => setCount(count + 1);
+  const decrementCount = () => setCount(count - 1);
+  
+  
+
+ const  state = {
+  
+   tags : ['tag1', 'tag2','tag3']
+
+ }
+  
+    
+   const {tags} = state
+   
+    
   return (
       <>
-        <span className={ count === 0 ? 'yellow' : 'blue'} >{formatCount()}</span>
-        <button>Increment</button>
+        <span className={`zero ${count <= 0 ? 'blue' : 'yellow'}`} >{count}</span>
+        <button onClick={incrementCount}>Increment</button>
+        <button onClick={decrementCount}>decrement</button>
+        <div>
+            {tags.length > 0 ? 
+                <ul>
+                  {tags.map((tag) => <li key={tag} >{tag}</li>)}
+                </ul> : <h3>No tags to show</h3> }
+        </div>
+      
+        
       </>
   )
 }
 
-export default counter
+export default Counter
